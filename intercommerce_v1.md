@@ -2096,6 +2096,7 @@ Content-Length: 100
         "merchantName": "XXX",
         "merchantBankCard": "XXXXXXXXXXXXXXXXX",
         "merchantIdCard": "XXXXXXXXXXXXXXXXXX",
+	"merchantMobile": "12345678901", 
  }
 }
 
