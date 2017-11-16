@@ -310,7 +310,7 @@ Content-Length: 100
 #### 1\. 查询用户绑定设备状态
 请求：
 ```
-GET /login HTTP/1.1
+GET /findUserEquipment HTTP/1.1
 Host: XXXXXX:XXXX
 Date: Thu, 03 Dec 2015 10:22:53
 Content-Type: application/x-www-form-urlencoded; charset=utf-8
