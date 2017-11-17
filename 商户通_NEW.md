@@ -337,6 +337,8 @@ Content-Length: 100
     "respTime": "20151228143800",
     "isSuccess": true,
     "respCode": "BIND_EQUIPMENT",
+     "ksn": "xxxxxxxxxxxxxxxxxx",
+     "productModel" :"hz-m20",
     "respMsg": "已绑设备"
 }
 //如果用户没有绑定设备
@@ -344,7 +346,7 @@ Content-Length: 100
    "respTime":"20171115152246",
    "isSuccess":false,
    "respCode":"NO_BIND_EQUIPMENT",
-   "respMsg":"已绑设备"
+   "respMsg":"未绑设备"
 }
 
 ```
