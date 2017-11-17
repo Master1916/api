@@ -1614,7 +1614,8 @@ Content-Length: 100
     "isSuccess":true,
     "respCode":"SUCCESS",
     "status":"1111", //认证状态 (第一位：实名认证状态, 第二位：商户认证状态, 第三位：账户认证状态, 第四位：签名认证状态)
-    "merchantReason":"商户信誉差",//商户认证失败原因
+                     //0 未提交， 1审核通过，2，审核失败，3 已提交
+    "merchantReason":"商户信誉差",//商户认证失败原因
     "realReason":"用户信誉差",//实名认证失败原因
     "accountReason":"账户信誉差",//账户认证失败原因
     "signatureReason":"签名丑",//签名认证失败原因
