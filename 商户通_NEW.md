@@ -319,7 +319,6 @@ Content-Type: application/x-www-form-urlencoded; charset=utf-8
 Content-Length: 30
 WSSESSION: ow5bblf8ethknl59vqp8qbbt-52
 
-"userId": "18911156118"  //用户名
 
 ```
 响应：  
