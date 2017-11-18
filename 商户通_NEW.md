@@ -62,14 +62,30 @@ HTTP/1.1 403 Forbidden
 |-------------|-----------------------------------------|----------------------|---------------|---------------|---------------|
 | 获取验证码| [/sendMessage](#sendMessage)                      | urlencoded           | POST   | 张树彬     | 否   |
 | 校验验证码| [/checkMobileMessage](#checkMobileMessage)                      | urlencoded           | POST   | 张树彬     | 否   |
+| 获取验证码| [/sendCustomerMessage](#sendCustomerMessage)              | urlencoded       | POST   | 张攀攀     | 是   |
+| ICkey回调接口| [/downloadFinished](#downloadFinished)                      | urlencoded           | POST   | 张攀攀     | 是   |
+| 联行号查询| [/bankQuery](#bankQuery)                      | urlencoded           | GET   | 张攀攀     | 否   |
+| 绑定/解绑用户银行卡| [/bindBankCard](#bindBankCard)                      | urlencoded           | GET   | 张攀攀     | 是   |
+| 获取用户银行卡列表| [/listBandCard](#listBandCard)                      | urlencoded           | GET   | 李飞     | 是   |
 | 注册| [/register](#register)                      | urlencoded           | POST   | 张树彬     | 否   |
 | 忘记密码| [/forgetPassword](#forgetPassword)                      | urlencoded           | POST   | 张树彬     | 否   |
 | 登录 | [/login](#login)                      | urlencoded           | POST      | 张树彬     | 否   |
 | 校验用户密码| [/checkUserPasswd](#checkUserPasswd)                      | urlencoded           | GET   | 张树彬     | 是   |
 | 修改密码| [/resetPassword](#resetPassword)                      | urlencoded           | POST   | 张树彬     | 是   |
-|获取用户设备状态| [/findUserEquipment](#findUserEquipment)                      | urlencoded           | GET      | 张攀攀    | 是   |
-|激活绑定设备| [/activeAndBindEquip](#activeAndBindEquip)                    | urlencoded           | POST      | 张攀攀    | 是   |
-|获取ICKEY| [/getIcKey](#getIcKey)                    | urlencoded           | POST      | 张攀攀    | 否   |
+| 获取用户设备状态| [/findUserEquipment](#findUserEquipment)                      | urlencoded           | GET      | 张攀攀    | 是   |
+| 激活绑定设备| [/activeAndBindEquip](#activeAndBindEquip)                    | urlencoded           | POST      | 张攀攀    | 是   |
+| 获取ICKEY| [/getIcKey](#getIcKey)                    | urlencoded           | POST      | 张攀攀    | 否   |
+| 实名认证| [/realNameAuth](#realNameAuth)                      | urlencoded           | POST   | 张攀攀     | 是   |
+| 实名认证信息回显| [/realNameAuthStatus](#realNameAuthStatus)                      | urlencoded           | GET   | 张攀攀  | 是   |
+| 商户认证| [/merchantAuth](#merchantAuth)                      | urlencoded           | POST   | 张攀攀     | 是   |
+| 商户认证信息回显| [/merchantAuthStatus](#merchantAuthStatus)                      | urlencoded           | GET   | 张攀攀  | 是   |
+| 账户认证| [/accountAuth](#accountAuth)                      | urlencoded           | POST   | 张攀攀     | 是   |
+| 账户认证信息回显| [/accountAuthStatus](#accountAuthStatus)                      | urlencoded           | GET   | 张攀攀    | 是   |
+| 签名认证| [/signatureAuth](#signatureAuth)                      | urlencoded           | POST   | 张攀攀    | 是   |
+| 签名认证信息回显| [/signatureAuthStatus](#signatureAuthStatus)                      | urlencoded           | GET   | 张攀攀| 是   |
+| IC回调 | [/transNotify](#transNotify)                      | urlencoded           | POST   | 张攀攀     | 是   |
+| 更换设备 | [/swiperChange](#swiperChange)                      | urlencoded           | POST   | 张攀攀     | 是   |
+| 查询完美账单MCC列表| [/perfectBillMCC.action](#perfectBillMCC)              | urlencoded           | GET |张攀攀| 是   |
 
 ----------------------------------------------------------------------------------
 <a id="sendMessage"></a>
@@ -450,5 +466,526 @@ Content-Length: 100
         }
     }
 }
+
+
+```
+##### [返回目录↑](#content-title)
+<a id="perfectBillMCC"></a>
+### 查询完美账单MCC列表  /perfectBillMCC
+#### 1\. 查询完美账单MCC列表
+请求：  
+```
+GET /perfectBillMCC HTTP/1.1
+Host: mposp.21er.tk
+Date: Thu, 03 Dec 2015 10:22:53
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Content-Length: 30
+
+```
+响应： 
+
+```
+HTTP/1.1 200 OK
+Server: Nginx
+Date: Thu, 09 Apr 2015 11:36:53 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Length: 100
+
+{
+    "respTime": "20151228143800",
+    "isSuccess": true,
+    "respCode": "SUCCESS",
+    "respMsg": "成功",
+    "mccList":[    
+      {
+        "id": 676453,--mcc id
+        "mccName": "电信服务",--行业大类
+      },
+    ...
+    ]
+}
+```
+##### [返回目录↑](#content-title)
+
+<a id="realNameAuth"></a>
+### 实名认证  /realNameAuth
+#### 1\. 实名认证
+请求：  
+```
+POST /realNameAuth HTTP/1.1
+Host: mposp.21er.tk
+Date: Thu, 03 Dec 2015 10:22:53
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Content-Length: 30
+
+appVersion: "ios.未知.1.1.813"
+name: "狗剩"
+idNumber: "341225199005063896"
+personal: 图片 //身份证正面照
+personalBack: 图片 //身份证背面照
+hPersonal： 图片 //手持身份证照片
+```
+响应： 
+
+```
+HTTP/1.1 200 OK
+Server: Nginx
+Date: Thu, 09 Apr 2015 11:36:53 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Length: 100
+
+{
+    "respTime":"20151130125253",
+    "isSuccess":true,
+    "respCode":"SUCCESS",
+    "respMsg":"实名认证信息已提交,请耐心等待"
+}
+```
+##### [返回目录↑](#content-title)
+<a id="realNameAuthStatus"></a>
+### 实名认证信息回显  /realNameAuthStatus
+#### 1\. 实名认证信息回显
+请求：  
+```
+GET /realNameAuthStatus HTTP/1.1
+Host: mposp.21er.tk
+Date: Thu, 03 Dec 2015 10:22:53
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Content-Length: 30
+
+appVersion: "ios.未知.1.1.813"
+
+```
+响应： 
+
+```
+HTTP/1.1 200 OK
+Server: Nginx
+Date: Thu, 09 Apr 2015 11:36:53 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Length: 100
+
+{
+    "respTime":"20151130125253",
+    "isSuccess":true,
+    "respCode":"SUCCESS",
+    "authStatus":(0:未认证, 1:认证成功, 2:认证失败, 3:审核中),
+    "name":"张三",//真实姓名
+    "idNumber":"341225199005063796",//身份证
+    "personal":"d500000000620995.png",//身份证正面照图片名称
+    "personalBack":"b500000000620995.png",//身份证背面照图片名称
+    "hPersonal":"b500000000620995.png",//手持身份证照片名称
+    "realReason":"用户签名与身份证名字不符",//认证失败原因
+    "idCard":"341225199005063796",//仅当为POS商户时返回
+    "realName":"张三",仅当为POS商户时返回
+    "respMsg":"查询成功"
+}
+```
+##### [返回目录↑](#content-title)
+<a id="merchantAuth"></a>
+### 商户认证  /merchantAuth
+#### 1\. 商户认证
+请求：  
+```
+POST /merchantAuth HTTP/1.1
+Host: mposp.21er.tk
+Date: Thu, 03 Dec 2015 10:22:53
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Content-Length: 30
+
+appVersion: "ios.未知.1.1.813"
+companyName: "企业名称"
+regPlace: "经营地址"
+businessLicense: "营业执照号"
+business: 图片 //营业执照照片
+isCheckMerchantInfo:"1",//是否校验商户资质(0:否，1:是)
+```
+
+响应： 
+
+```
+HTTP/1.1 200 OK
+Server: Nginx
+Date: Thu, 09 Apr 2015 11:36:53 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Length: 100
+
+{
+    "respTime":"20151130125253",
+    "isSuccess":true,
+    "respCode":"SUCCESS",
+    "respMsg":"商户认证信息已提交,请耐心等待"
+}
+```
+##### [返回目录↑](#content-title)
+<a id="merchantAuthStatus"></a>
+### 商户认证信息回显  /merchantAuthStatus
+#### 1\. 商户认证信息回显
+请求：  
+```
+GET /merchantAuthStatus HTTP/1.1
+Host: mposp.21er.tk
+Date: Thu, 03 Dec 2015 10:22:53
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Content-Length: 30
+
+appVersion: "ios.未知.1.1.813"
+
+```
+响应： 
+
+```
+HTTP/1.1 200 OK
+Server: Nginx
+Date: Thu, 09 Apr 2015 11:36:53 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Length: 100
+
+{
+    "respTime":"20151130125253",
+    "isSuccess":true,
+    "respCode":"SUCCESS",
+    "authStatus":(0:未认证, 1:认证成功, 2:认证失败, 3:审核中),
+    "companyName":"大众食品商店",//企业名称
+    "business":"q500000000620995.png",//营业执照图片名称
+    "regPlace":"兴华大道",//经营地址
+    "businessLicense":"5DSF5SDFS5DF",//营业执照号
+    "merchantReason":"商户不行",//认证失败原因
+    "respMsg":"查询成功"
+}
+```
+##### [返回目录↑](#content-title)
+<a id="accountAuth"></a>
+### 账户认证  /accountAuth
+#### 1\. 账户认证
+请求：  
+```
+POST /accountAuth HTTP/1.1
+Host: mposp.21er.tk
+Date: Thu, 03 Dec 2015 10:22:53
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Content-Length: 30
+
+appVersion: "ios.未知.1.1.813"
+name: "姓名" //名字
+identityCard : 370828199902019876 //身份证号
+bankName: "银行名称" 
+unionBankNo: "联行号"
+accountNo: "银行卡号"
+card: 图片 //银行卡图片
+mobile: 15877987678 // 手机号
+verificationCode : 2343 //验证码
+```
+
+响应： 
+
+```
+HTTP/1.1 200 OK
+Server: Nginx
+Date: Thu, 09 Apr 2015 11:36:53 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Length: 100
+
+{
+    "respTime":"20151130125253",
+    "isSuccess":true,
+    "respCode":"SUCCESS",
+    "respMsg":"账户认证信息已提交,请耐心等待"
+}
+```
+##### [返回目录↑](#content-title)
+<a id="accountAuthStatus"></a>
+### 账户认证信息回显  /accountAuthStatus
+#### 1\. 账户认证信息回显
+请求：  
+```
+GET /accountAuthStatus HTTP/1.1
+Host: mposp.21er.tk
+Date: Thu, 03 Dec 2015 10:22:53
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Content-Length: 30
+
+appVersion: "ios.未知.1.1.813"
+
+```
+响应： 
+
+```
+HTTP/1.1 200 OK
+Server: Nginx
+Date: Thu, 09 Apr 2015 11:36:53 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Length: 100
+
+{
+    "respTime":"20151130125253",
+    "isSuccess":true,
+    "respCode":"SUCCESS",
+    "authStatus":(0:未认证, 1:认证成功, 2:认证失败, 3:审核中),
+    "accountNo":"6217000010012052348",//银行卡号
+    "card":"c500000000620995.png",//银行卡图片名称
+    "name": "姓名" //名字
+    "identityCard" : "370828199902019876" //身份证号
+    "mobile": "15877987678" // 手机号
+    "bankName":"建设银行",//银行名称
+    "unionBankNo":"56SDFSD56SDF",//联行号
+    "accountReason":"账户信誉差",//认证失败原因
+    "respMsg":"查询成功"
+}
+```
+##### [返回目录↑](#content-title)
+<a id="signatureAuth"></a>
+### 签名认证  /signatureAuth
+#### 1\. 签名认证
+请求：  
+```
+POST /signatureAuth HTTP/1.1
+Host: mposp.21er.tk
+Date: Thu, 03 Dec 2015 10:22:53
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Content-Length: 30
+
+appVersion: "ios.未知.1.1.813"
+signature: 图片 //签名图片
+```
+
+响应： 
+
+```
+HTTP/1.1 200 OK
+Server: Nginx
+Date: Thu, 09 Apr 2015 11:36:53 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Length: 100
+
+{
+    "respTime":"20151130125253",
+    "isSuccess":true,
+    "respCode":"SUCCESS",
+    "respMsg":"签名认证信息已提交,请耐心等待"
+}
+```
+##### [返回目录↑](#content-title)
+<a id="signatureAuthStatus"></a>
+### 签名认证信息回显  /signatureAuthStatus
+#### 1\. 签名认证信息回显
+请求：  
+```
+GET /signatureAuthStatus HTTP/1.1
+Host: mposp.21er.tk
+Date: Thu, 03 Dec 2015 10:22:53
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Content-Length: 30
+
+appVersion: "ios.未知.1.1.813"
+
+```
+响应： 
+
+```
+HTTP/1.1 200 OK
+Server: Nginx
+Date: Thu, 09 Apr 2015 11:36:53 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Length: 100
+
+{
+    "respTime":"20151130125253",
+    "isSuccess":true,
+    "respCode":"SUCCESS",
+    "name":"张三",
+    "authStatus":(0:未认证, 1:认证成功, 2:认证失败, 3:审核中),
+    "signature":"s500000000620995.png",//签名图片名称
+    "signatureReason":"签名丑",//认证失败原因
+    "respMsg":"查询成功"
+}
+```
+##### [返回目录↑](#content-title)
+
+<a id="sendCustomerMessage"></a>
+### 获取验证码  /sendCustomerMessage
+#### 1\. 通过手机号获取验证码
+请求：  
+```
+POST /sendCustomerMessage HTTP/1.1
+Host: mposp.21er.tk
+Date: Thu, 03 Dec 2015 10:22:53
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Content-Length: 30
+
+appVersion: "ios.未知.1.1.813"
+accountName: "张无忌" //姓名
+idNumber   ： "010876765543456543" //身份证
+mobile     ： "15201059026" //手机号
+bankCard   ： "62202010904267897" // 银行卡号
+reqTime    ： "20151125161740" //请求时间
+```
+响应：  
+```
+HTTP/1.1 200 OK
+Server: Nginx
+Date: Thu, 09 Apr 2015 11:36:53 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Length: 100
+
+{
+   "respTime":"20151125161740",
+   "isSuccess":true,
+   "respCode":"SUCCESS",
+   "respMsg":"发送验证码成功,注意查收"
+   
+}
+
+```
+##### [返回目录↑](#content-title)
+
+<a id="bankList"></a>
+### 获取18家结算银行  /bankList
+#### 1\. 获取18家结算银行
+请求：  
+```
+GET /bankList HTTP/1.1
+Host: mposp.21er.tk
+Date: Thu, 03 Dec 2015 10:22:53
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Content-Length: 30
+
+card : XXXXXX
+reqTime: "20151124111059"
+appVersion: "ios.未知.1.1.813"
+
+```
+响应： 
+
+```
+HTTP/1.1 200 OK
+Server: Nginx
+Date: Thu, 09 Apr 2015 11:36:53 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Length: 100
+
+{
+    "list": {
+        [bankName:"2222", bankCode: "333", bankLogoIndex: "333", support: "true"],
+        [bankName:"4444", bankCode: "555", bankLogoIndex: "666", support: "true"]},
+    "respTime":"20151130125253",
+    "isSuccess":true,
+    "respCode":"SUCCESS",
+    "respMsg":"验证成功"
+}
+```
+##### [返回目录↑](#content-title)
+
+<a id="bindBankCard"></a>
+### 绑定/解绑用户银行卡  /bindBankCard
+#### 1\. 绑定/解绑用户银行卡
+请求：  
+```
+POST /bindBankCard HTTP/1.1
+Host: mposp.21er.tk
+Date: Thu, 03 Dec 2015 10:22:53
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Content-Length: 30
+
+isDelete: "false" //绑定、解绑参数
+cardIds: "XXX YYYY"//解绑卡列表 空格区分
+bankCard: "XXXX"
+mobile: "13777775555"
+reqTime: "20151124111059"
+isSelf : true //true表示添加自己的银行卡 false 表示添加别人的银行卡
+appVersion: "ios.未知.1.1.813"
+
+
+```
+响应： 
+
+```
+HTTP/1.1 200 OK
+Server: Nginx
+Date: Thu, 09 Apr 2015 11:36:53 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Length: 100
+
+{
+    "bankCard": "XXXX",
+    "bankName": "xx银行",
+    "bankIndex": 11,
+    "card_type": "借记卡",
+    "bankAccountName": XX银行,
+    "isSuccess":true,
+    "respCode":"SUCCESS",
+    "respMsg":"验证成功"
+}
+```
+##### [返回目录↑](#content-title)
+
+<a id="listBandCard"></a>
+### 获取商户绑定银行卡列表  /listBandCard
+#### 1\. 获取商户绑定银行卡列表
+请求：  
+```
+POST /listBandCard HTTP/1.1
+Host: mposp.21er.tk
+Date: Thu, 03 Dec 2015 10:22:53
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Content-Length: 30
+
+appVersion: "ios.未知.1.1.813"
+
+```
+响应： 
+
+```
+HTTP/1.1 200 OK
+Server: Nginx
+Date: Thu, 09 Apr 2015 11:36:53 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Length: 100
+
+{
+list:[
+{
+    "accountNo": "XXXX",
+    "bankName": "xx银行",
+    "bankIndex": 1,
+    "status": 1,//认证状态
+    "cardId": 1
+},{
+    "accountNo": "XXXX",
+    "bankName": "xx银行",
+    "bankIndex": 3,
+    "status": 1,//认证状态
+    "cardId": 2
+}]
+]
+```
+##### [返回目录↑](#content-title)
+
 
 
