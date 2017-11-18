@@ -1155,7 +1155,6 @@ Content-Type: application/x-www-form-urlencoded; charset=utf-8
 Content-Length: 30
 
 appVersion: "ios.未知.1.1.813"
-reqNo:"1234"
 ksnNo:"XXXXXX"
 model:"landim35"
 macAddress:"XXXXXXX"
