@@ -73,7 +73,7 @@ HTTP/1.1 403 Forbidden
 | 查询交易| [/queryTrans](#queryTrans)                      | urlencoded           | GET   | 李飞     | 是   |
 | 联行号查询| [/bankQuery](#bankQuery)                      | urlencoded           | GET   | 李飞     | 否   |
 | 获取18家结算银行| [/bankList](#bankList)                      | urlencoded           | GET   | 李飞     | 否   |
-| 绑定/解绑用户银行卡| [/bindBankCard](#bindBankCard)                      | urlencoded           | GET   | 李飞     | 是   |
+| 绑定/解绑用户银行卡| [/bindBankCard](#bindBankCard)                      | urlencoded           | POST   | 李飞     | 是   |
 | 获取用户银行卡列表| [/listBandCard](#listBandCard)                      | urlencoded           | GET   | 李飞     | 是   |
 | 激活绑定设备| [/activeAndBindEquip](#activeAndBindEquip)                      | urlencoded           | POST   | 张树彬     | 是   |
 | 实名认证| [/realNameAuth](#realNameAuth)                      | urlencoded           | POST   | 张树彬     | 是   |
@@ -881,7 +881,7 @@ cardIds: "6258021234333131" //当isDelete= true时，该字段需要有值，可
 bankCard: "6258021234333131" //当isDelete = false 时， 该字段需要有值，表示需要添加的银行卡号 
 mobile: "13777775555" // 手机号
 idCode："9999"  //手机号验证码，如果添加的是磁条卡，需要发送手机验证码
-isSelf : true //true表示添加自己的银行卡  false 表示添加别人的银行卡
+isSelf : "true" //true表示添加自己的银行卡  false 表示添加别人的银行卡
 appVersion: "ios.未知.1.1.813"
 
 
