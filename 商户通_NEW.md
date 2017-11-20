@@ -589,8 +589,7 @@ Content-Length: 100
     "personalBack":"b500000000620995.png",//身份证背面照图片名称
     "hPersonal":"b500000000620995.png",//手持身份证照片名称
     "realReason":"用户签名与身份证名字不符",//认证失败原因
-    "idCard":"341225199005063796",//仅当为POS商户时返回
-    "realName":"张三",仅当为POS商户时返回
+
     "respMsg":"查询成功"
 }
 ```
