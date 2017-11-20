@@ -1673,7 +1673,7 @@ Content-Type: application/x-www-form-urlencoded; charset=utf-8
 Content-Length: 30
 
 appVersion: "ios.未知.1.1.813"
-fileName  : "c5000000000000000.png" //图片名称
+fileName  : "8b957d60e25342e4a700bd693abe3282" //图片uuid地址
 
 ```
 
