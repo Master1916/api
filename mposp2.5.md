@@ -876,12 +876,12 @@ Date: Thu, 03 Dec 2015 10:22:53
 Content-Type: application/x-www-form-urlencoded; charset=utf-8
 Content-Length: 30
 
-isDelete: "false" //绑定、解绑参数
-cardIds: "XXX YYYY"//解绑卡列表 空格区分
-bankCard: "XXXX"
-mobile: "13777775555"
-reqTime: "20151124111059"
-isSelf : true //true表示添加自己的银行卡 false 表示添加别人的银行卡
+isDelete: "false" // false:表示该请求是要添加银行卡， true：表示是要解绑银行卡
+cardIds: "6258021234333131" //当isDelete= true时，该字段需要有值，可以同时解绑多个以空格区分
+bankCard: "6258021234333131" //当isDelete = false 时， 该字段需要有值，表示需要添加的银行卡号 
+mobile: "13777775555" // 手机号
+idCode："9999"  //手机号验证码，如果添加的是磁条卡，需要发送手机验证码
+isSelf : true //true表示添加自己的银行卡  false 表示添加别人的银行卡
 appVersion: "ios.未知.1.1.813"
 
 
