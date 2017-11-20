@@ -360,7 +360,8 @@ Content-Length: 100
     "realReason": "",
     "signatureReason": "",
     "accountReason": "",
-    "isMerchantD0": true
+    "isMerchantD0": true,
+    "AuthFirstPass":0,// 如果 该值是0 表示四项认证没有通过过认证， 1 表示四项认证通过过认证
 }
 //如果用户没有绑定设备
 {
