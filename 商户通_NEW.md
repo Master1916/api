@@ -361,7 +361,7 @@ Content-Length: 100
     "signatureReason": "",
     "accountReason": "",
     "isMerchantD0": true,
-    "AuthFirstPass":0,// 如果 该值是0 表示四项认证没有通过过认证， 1 表示四项认证通过过认证
+   
 }
 //如果用户没有绑定设备
 {
@@ -589,7 +589,7 @@ Content-Length: 100
     "personalBack":"b500000000620995.png",//身份证背面照图片名称
     "hPersonal":"b500000000620995.png",//手持身份证照片名称
     "realReason":"用户签名与身份证名字不符",//认证失败原因
-
+ "AuthFirstPass":0,// 如果 该值是0 表示四项认证没有通过过认证， 1 表示四项认证通过过认证
     "respMsg":"查询成功"
 }
 ```
