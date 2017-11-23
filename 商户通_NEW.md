@@ -86,7 +86,7 @@ HTTP/1.1 403 Forbidden
 | IC回调 | [/transNotify](#transNotify)                      | urlencoded           | POST   | 张攀攀     | 是   |
 | 更换设备 | [/swiperChange](#swiperChange)                      | urlencoded           | POST   | 张攀攀     | 是   |
 | 查询完美账单MCC列表| [/perfectBillMCC.action](#perfectBillMCC)              | urlencoded           | GET |张攀攀| 是   |
-
+| 获取已绑定POS商户列表|[/getBindingPosMerchantList.action](#getBindingPosMerchantList)  | urlencoded    | POST |张攀攀| 是   |
 ----------------------------------------------------------------------------------
 <a id="sendMessage"></a>
 ### 获取验证码  /sendMessage
@@ -1187,3 +1187,51 @@ Content-Length: 100
 ```
 
 ##### [返回目录↑](#content-title)
+
+<a id="getBindingPosMerchantList"></a>
+### 获取已绑定POS商户列表  /getBindingPosMerchantList
+#### 1\. 获取已绑定POS商户列表
+请求：  
+```
+post /getBindingPosMerchantList HTTP/1.1
+Host: mposp.21er.tk
+Date: Thu, 03 Dec 2015 10:22:53
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Content-Length: 30
+
+"appVersion": "android.ZFT.1.2.143",
+"lastID": "" //最后一条绑定记录ID,
+
+```
+响应：  
+```
+HTTP/1.1 200 OK
+Server: Nginx
+Date: Thu, 09 Apr 2015 11:36:53 GMT
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Cache-Control: no-cache
+Content-Length: 100
+
+{
+    "respTime": "20151228143800",
+    "isSuccess": true,
+    "respCode": "SUCCESS",
+    "respMsg": "成功",
+    "bindingCount": 13,
+    "bindingList": [
+    {
+    	    "recordId": "1007",
+            "merchantName": "郑******",
+            "merchantNo": "Z08000000026875",
+            "status": 2,//pos机验证状态 1,等待认证，2认证成功，3认证失败，4解绑
+            "urlPath": "appMerchant/posInfoValidation.htm?id=1007"
+    }
+    ...
+    ]
+}
+```
+
+##### [返回目录↑](#content-title)
+
+
